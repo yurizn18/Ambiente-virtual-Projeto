@@ -10,122 +10,318 @@
 
   <!-- ✅ CSS “à prova de falha” (garante no celular) -->
   <style>
-    :root{
-      --bg1:#090909;
-      --bg2:#0f0f10;
-      --card:#1a1b1d;
-      --card2:#161719;
-      --text:#e9e9ea;
-      --muted:#a9aaad;
-      --accent:#ff7a00;
-      --border:rgba(255,122,0,.35);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --radius:18px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
+/* =========================================================
+   style_saiu.css — PADRÃO LOGIN (dark + glow laranja controlado)
+========================================================= */
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: var(--font);
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 50% 30%, rgba(255,122,0,.14), transparent 60%),
-                  radial-gradient(900px 700px at 30% 70%, rgba(255,122,0,.10), transparent 55%),
-                  linear-gradient(180deg, var(--bg2), var(--bg1));
-    }
+/* ===== Reset básico ===== */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
 
-    .bg{
-      position:fixed; inset:0;
-      background: radial-gradient(800px 500px at 50% 35%, rgba(255,122,0,.10), transparent 60%);
-      filter: blur(18px);
-      opacity:.9;
-      pointer-events:none;
-    }
+:root{
+  /* base */
+  --bg:#070707;
+  --text:#e9e9ea;
+  --muted:rgba(233,233,234,.72);
+  --muted2:rgba(233,233,234,.55);
 
-    .wrap{
-      min-height:100%;
-      display:grid;
-      place-items:center;
-      padding: max(22px, env(safe-area-inset-top)) 16px max(22px, env(safe-area-inset-bottom));
-    }
+  /* laranja do sistema (mais “chamativo”, tipo o login) */
+  --accent:#ff6600;         /* <- ajuste fino do tom */
+  --accent2:#ff8f2a;
 
-    .card{
-      width:min(520px, 92vw);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px 22px;
-      position:relative;
-      overflow:hidden;
-    }
+  /* card */
+  --card-top: rgba(255,255,255,.06);
+  --card-bot: rgba(255,255,255,.03);
+  --stroke: rgba(255,122,0,.22);
+  --shadow: 0 22px 60px rgba(0,0,0,.70);
 
-    .card:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(500px 260px at 20% 0%, rgba(255,122,0,.18), transparent 60%);
-      pointer-events:none;
-    }
+  --radius:18px;
 
-    .brand{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:0;
-      font-weight:900;
-      letter-spacing:.6px;
-      font-size:42px;
-      margin-bottom:10px;
-      line-height:1;
-    }
-    .b1{ color:var(--accent); }
-    .b2{ color:#bdbec2; }
+  --font: ui-sans-serif, system-ui, -apple-system, "Inter", Segoe UI, Roboto, Arial, sans-serif;
+}
 
-    .title{
-      margin: 10px 0 8px;
-      font-size: clamp(22px, 3.8vw, 30px);
-      font-weight: 800;
-      text-align:center;
-    }
-    .sub{
-      margin: 0 auto 16px;
-      max-width: 44ch;
-      color: var(--muted);
-      text-align:center;
-      font-size: 15px;
-      line-height:1.4;
-    }
+body{
+  margin:0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  overflow-x:hidden;
+}
 
-    .tip{
-      margin: 14px auto 0;
-      padding: 14px 14px;
-      border-radius: 14px;
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(255,255,255,.08);
-      color: #d7d8db;
-      font-size: 15px;
-      line-height:1.35;
-      max-width: 48ch;
-      text-align:center;
-    }
-    .tip strong{ color:#ffffff; }
+/* Safe-area (iPhone notch) */
+@supports (padding: env(safe-area-inset-top)) {
+  body{
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
 
-    .small{
-      margin-top: 12px;
-      text-align:center;
-      color: rgba(233,233,234,.75);
-      font-size: 13px;
-    }
+/* ===== Fundo (mais preto + glow laranja do mesmo tom do botão, bem suave) ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
 
-    .foot{
-      margin-top: 16px;
-      text-align:center;
-      color: rgba(233,233,234,.55);
-      font-size: 12px;
-      letter-spacing:.4px;
-    }
-  </style>
+  /* bem parecido com o login: preto dominando e laranja só “respirando” */
+  background:
+    radial-gradient(900px 600px at 50% 35%, rgba(255,115,0,.12), transparent 62%),
+    radial-gradient(1200px 800px at 50% 55%, rgba(0,0,0,.25), rgba(0,0,0,.92));
+}
+
+/* ===== Layout ===== */
+.wrap{
+  position:relative;
+  z-index:1;
+  min-height: 100dvh;
+  display:grid;
+  place-items:center;
+  padding: 28px 16px;
+}
+
+/* ===== Card (igual vibe do login) ===== */
+.card{
+  width: min(520px, 92vw);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  text-align:center;
+
+
+  background: linear-gradient(180deg, #1a1a1a, #101010);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===== Marca ===== */
+.brand{
+  font-weight: 900;
+  letter-spacing: .6px;
+  font-size: clamp(34px, 6vw, 44px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.brand .b1{ color: var(--accent); }
+.brand .b2{ color: #FFFFFF8C; margin-left: 2px; }
+
+/* ===== Textos ===== */
+.title{
+  margin: 10px 0 10px 0;
+  font-size: clamp(22px, 4.8vw, 34px);
+  font-weight: 800;
+}
+
+.sub{
+  margin: 0 auto 14px auto;
+  max-width: 44ch;
+  color: var(--muted);
+  line-height: 1.35;
+  font-size: clamp(14px, 3.5vw, 16px);
+}
+
+/* Tip igual sensação do login (cartão interno mais “cinza”, sem laranja forte) */
+.tip{
+  margin: 12px auto 6px auto;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.08);
+
+  color: rgba(233,233,234,.78);
+  max-width: 46ch;
+  line-height: 1.35;
+  font-size: clamp(14px, 3.5vw, 16px);
+}
+.tip strong{
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.small{
+  margin: 14px 0 0 0;
+  color: var(--muted2);
+  font-size: 13px;
+}
+
+.foot{
+  margin-top: 16px;
+  color: rgba(233,233,234,.55);
+  font-size: 12px;
+  letter-spacing: .4px;
+}
+
+/* ================================
+   EFEITO DO LOGIN: FLOAT + BORDA FLOW
+   (aplicado no modal do "saiu")
+================================ */
+
+/* float (movimento do modal) */
+@keyframes floatModal{
+  0% { transform: translateY(0); }
+  33%{ transform: translateY(-6px); }
+  66%{ transform: translateY(-2px); }
+  100%{ transform: translateY(0); }
+}
+
+/* aplica o float no modal */
+.card{
+  animation: floatModal 7.5s cubic-bezier(.4,0,.2,1) infinite;
+  position: relative;
+  z-index: 1;
+}
+
+/* borda premium animada (igual ao login) */
+.card::after{
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 40%,
+      rgba(255,154,60,.40),
+      rgba(255,102,0,.52),
+      rgba(255,154,60,.40),
+      transparent 60%
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  background-size: 300% 100%;
+  animation: borderFlow 18s linear infinite;
+
+  pointer-events: none;
+}
+
+/* ===== BORDA LARANJA ANIMADA (igual login) ===== */
+.card{
+  position: relative;
+  z-index: 1;
+}
+
+/* ==============================
+   BORDA ANIMADA + GLOW (igual login)
+   ============================== */
+.card{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* MUITO importante: trava a pilha de z-index */
+}
+
+/* conteúdo sempre acima */
+.card > *{
+  position: relative;
+  z-index: 5;
+}
+
+/* glow interno (fica atrás do conteúdo e atrás da borda) */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background: radial-gradient(520px 280px at 20% 0%, rgba(255,122,0,.18), transparent 60%);
+  pointer-events:none;
+  z-index: 2;
+}
+
+/* BORDA LARANJA “PASSANDO” */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 40%,
+    rgba(255,154,60,.40),
+    rgba(255,102,0,.60),
+    rgba(255,154,60,.40),
+    transparent 60%
+  );
+
+  /* recorta o centro e deixa só a “borda” */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  background-size: 300% 100%;
+  animation: borderFlow 18s linear infinite;
+
+  pointer-events:none;
+  z-index: 4; /* acima do glow */
+}
+
+@keyframes borderFlow{
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ==========================================
+   BORDA PREMIUM — IDÊNTICA AO LOGIN
+   ========================================== */
+
+/* ⚠️ MUITO IMPORTANTE: NÃO cortar a borda */
+.card{
+  position: relative;
+  z-index: 1;
+  overflow: visible !important; /* ← isso resolve */
+}
+
+/* Borda animada passando */
+.card::before{
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 40%,
+      rgba(255,154,60,.40),
+      rgba(255,102,0,.55),
+      rgba(255,154,60,.40),
+      transparent 60%
+    );
+
+  background-size: 300% 100%;
+  animation: borderFlow 18s linear infinite;
+
+  pointer-events: none;
+  z-index: 3;
+
+  /* RECORTE — deixa só a borda */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+}
+
+/* animação da borda */
+@keyframes borderFlow{
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+</style>
 </head>
 
 <body>

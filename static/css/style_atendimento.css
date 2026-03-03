@@ -57,7 +57,7 @@ body{
   box-shadow:0 10px 30px rgba(255,122,0,.12);
 }
 .brand-meta{display:flex;flex-direction:column;line-height:1.15}
-.brand-name{font-weight:800;font-size:14px}
+.brand-name{font-weight:700;font-size:14px}
 .brand-sub{font-size:12px;color:var(--muted2);margin-top:2px}
 
 .nav{display:flex;flex-direction:column;gap:6px;padding:10px 6px;flex:1;overflow:auto}
@@ -389,4 +389,1334 @@ h1{margin:8px 0 4px;font-size:34px;letter-spacing:-.6px}
 .call-box span{
   font-size:13px;
   color:#888;
+}
+
+/* Tema claro/escuro via data-theme no <html> */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Exemplo básico (você pode adaptar pro seu design) */
+:root[data-theme="light"] body {
+  background: #f5f6f8;
+  color: #111;
+}
+
+:root[data-theme="light"] .panel,
+:root[data-theme="light"] .sidebar,
+:root[data-theme="light"] .topbar {
+  background: rgba(0,0,0,.05);
+  border-color: rgba(0,0,0,.08);
+  color: #111;
+}
+
+:root[data-theme="light"] .subtitle,
+:root[data-theme="light"] small {
+  color: rgba(0,0,0,.65);
+}
+
+/* ============================
+   MODAL CONFIRMAR CHEGADA
+============================ */
+.arrive-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+.arrive-modal.show{ display:block; }
+
+.arrive-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+}
+
+.arrive-box{
+  position: relative;
+  width: min(520px, calc(100% - 28px));
+  margin: 14vh auto 0;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(15,18,30,.92);
+  box-shadow: 0 30px 80px rgba(0,0,0,.60);
+  color: #fff;
+}
+
+.arrive-text{
+  margin: 10px 0 6px;
+  color: rgba(255,255,255,.88);
+}
+.arrive-sub{
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  margin-bottom: 14px;
+}
+
+.arrive-actions{
+  display:flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ============================
+   MODAL CONFIRMAR CHEGADA
+============================ */
+.arrive-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99999; /* bem alto */
+}
+.arrive-modal.show{ display:block; }
+
+.arrive-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+}
+
+.arrive-box{
+  position: relative;
+  width: min(520px, calc(100% - 28px));
+  margin: 14vh auto 0;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(15,18,30,.92);
+  box-shadow: 0 30px 80px rgba(0,0,0,.60);
+  color: #fff;
+}
+
+.arrive-text{
+  margin: 10px 0 6px;
+  color: rgba(255,255,255,.88);
+}
+.arrive-sub{
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  margin-bottom: 14px;
+}
+
+.arrive-actions{
+  display:flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+select {
+  background: rgba(0, 0, 0, .10);
+  color: #fff;
+  border: 1px solid #2a2f45;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+select option {
+  background: rgba(0, 0, 0, .10);
+  color: #fff;
+}
+
+/* FORÇA os selects no modo escuro (resolve dropdown branco no Chrome/Windows) */
+select,
+.queue-picker__select {
+  color-scheme: dark;
+  background-color: rgba(0, 0, 0, .10) !important;
+  color: #fff !important;
+  border: 1px solid #2a2f45 !important;
+}
+
+select option {
+  background-color: rgba(0, 0, 0, .10) !important;
+  color: #fff !important;
+}
+/* select fechado (sempre escuro) */
+select,
+.queue-picker__select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background: rgba(0, 0, 0, .10) !important;
+  color: #fff !important;
+
+  border: 1px solid rgba(255,255,255,.12) !important;
+  border-radius: 14px !important;
+
+  padding: 10px 44px 10px 12px !important; /* espaço pra setinha */
+  outline: none;
+}
+
+/* foco */
+select:focus,
+.queue-picker__select:focus{
+  border-color: rgba(255,122,0,.45) !important;
+  box-shadow: 0 0 0 3px rgba(255,122,0,.14) !important;
+}
+
+/* seta custom */
+.select-wrap{
+  position: relative;
+  width: min(520px, 100%);
+}
+
+.select-wrap::after{
+  content: "▾";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255,255,255,.75);
+  font-size: 14px;
+  font-weight: 900;
+}
+/* =========================================================
+   SELECT DARK — PADRÃO DO SISTEMA ANDA LOGO
+========================================================= */
+
+/* Container pra seta */
+.select-wrap{
+  position: relative;
+  width: 100%;
+}
+
+/* Seta custom */
+.select-wrap::after{
+  content: "▾";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255,255,255,.75);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* SELECT FECHADO */
+select.select-dark{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px 44px 12px 12px;
+
+  background: rgba(0, 0, 0, .10) !important;
+  color: #fff !important;
+
+  border: 1px solid rgba(255,255,255,.12) !important;
+  outline: none;
+
+  /* força modo escuro no Chrome/Windows */
+  color-scheme: dark;
+
+  font-family: inherit;
+  font-size: 14px;
+}
+
+/* Hover */
+select.select-dark:hover{
+  background: rgba(0, 0, 0, .10) !important;
+}
+
+/* Focus */
+select.select-dark:focus{
+  border-color: rgba(255,122,0,.55) !important;
+  box-shadow: 0 0 0 3px rgba(255,122,0,.18) !important;
+}
+
+/* OPTIONS (lista aberta) */
+select.select-dark option{
+  background: rgba(0, 0, 0, .10) !important;
+  color: #fff !important;
+}
+
+/* Option selecionada */
+select.select-dark option:checked{
+  background: rgba(255,122,0,.35) !important;
+  color: #fff !important;
+}
+
+/* Placeholder desabilitado */
+select.select-dark option[disabled]{
+  color: rgba(255,255,255,.45);
+}
+
+/* ========= SELECT NO ESTILO INPUT (premium dark) ========= */
+
+.select-wrap{
+  position: relative;
+  width: 100%;
+}
+
+/* seta igual input */
+.select-wrap::after{
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255,255,255,.70);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* select com cara de input */
+select.input-like{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  height: 44px;
+  padding: 10px 44px 10px 14px; /* espaço pra seta */
+  border-radius: 14px;
+
+  background: rgba(0, 0, 0, .10);
+  border: 1px solid rgba(255,255,255,.08);
+
+  color: rgba(255,255,255,.92);
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+  transition: .18s ease;
+
+  /* força o menu do navegador em modo escuro (Chrome/Windows) */
+  color-scheme: dark;
+}
+
+/* hover */
+select.input-like:hover{
+  border-color: rgba(255,255,255,.12);
+  background: rgba(0,0,0,.26);
+}
+
+/* foco (laranja do tema) */
+select.input-like:focus{
+  border-color: rgba(255,122,0,.55);
+  box-shadow: 0 0 0 3px rgba(255,122,0,.16);
+}
+
+/* opções do dropdown */
+select.input-like option{
+  background: rgba(0, 0, 0, .10) !important;
+  color: #fff !important;
+}
+
+/* placeholder estilo “muted” (se você usar option disabled) */
+select.input-like option[disabled]{
+  color: rgba(255,255,255,.55);
+}
+
+/* =========================
+   MODAL "CLIENTE COMPARECEU?"
+========================= */
+.confirm-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.confirm-modal.show{ display:flex; }
+
+.confirm-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(6px);
+}
+
+.confirm-card{
+  position: relative;
+  z-index: 2;
+  width: min(560px, 92vw);
+  border-radius: 18px;
+  border: 1px solid rgba(255,122,0,.22);
+  background: linear-gradient(180deg, #1a1a1a 0%, #101010 100%) !important;
+  box-shadow: 0 30px 90px rgba(0,0,0,.85);
+  padding: 26px 22px;
+  text-align: center;
+  color: #fff;
+  animation: pop .18s ease;
+}
+
+@keyframes pop{
+  from{ opacity:0; transform: scale(.96); }
+  to{ opacity:1; transform: scale(1); }
+}
+
+.confirm-title{
+  font-weight: 900;
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+.confirm-sub{
+  opacity: .85;
+  font-size: 13px;
+  margin: 0 0 14px;
+}
+
+.confirm-client{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  font-weight: 900;
+  margin: 6px 0 16px;
+}
+
+.confirm-actions{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.confirm-btn{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: 12px 14px;
+  font-weight: 900;
+  cursor: pointer;
+  min-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-btn.primary{
+  background: #ff7a00;
+  color: #0b0c0e;
+  border-color: rgba(255,122,0,.55);
+  box-shadow: 0 14px 30px rgba(255,122,0,.18);
+}
+
+.confirm-btn.ghost:hover{
+  background: rgba(255,255,255,.10);
+}
+
+.confirm-hint{
+  margin-top: 14px;
+  font-size: 12px;
+  opacity: .72;
+}
+
+/* =========================================================
+   ✅ PATCH TEMA CLARO — Atendimento (sem quebrar o dark)
+   Cole no FINAL do style_atendimento.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --border:rgba(0,0,0,.10);
+  --muted:rgba(18,19,24,.70);
+  --muted2:rgba(18,19,24,.55);
+  --text:#121318;
+
+  --accent:#ff7a00;
+  --accent2:#ff8f2a;
+  --success:#2bd576;
+}
+
+/* fundo e texto base */
+:root[data-theme="light"] body{
+  background:
+    radial-gradient(1200px 700px at 30% 0%, rgba(255,122,0,.10), transparent 55%),
+    radial-gradient(900px 600px at 80% 20%, rgba(0,0,0,.05), transparent 55%),
+    var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* sidebar/topbar */
+:root[data-theme="light"] .sidebar{
+  background: linear-gradient(180deg, #ffffff 0%, #f3f5fb 100%) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+:root[data-theme="light"] .brand-sub{
+  color: var(--muted2) !important;
+}
+
+:root[data-theme="light"] .nav a{
+  color: rgba(18,19,24,.82) !important;
+}
+
+:root[data-theme="light"] .nav a:hover{
+  background: rgba(0,0,0,.04) !important;
+  border-color: rgba(0,0,0,.06) !important;
+}
+
+:root[data-theme="light"] .nav-sep{
+  border-top-color: rgba(0,0,0,.08) !important;
+}
+
+:root[data-theme="light"] .sidebar-footer{
+  border-top-color: rgba(0,0,0,.08) !important;
+  color: rgba(18,19,24,.55) !important;
+}
+
+:root[data-theme="light"] .topbar{
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72)) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+:root[data-theme="light"] .estab{
+  color: rgba(18,19,24,.78) !important;
+}
+
+:root[data-theme="light"] .estab b{
+  color: var(--text) !important;
+}
+
+/* botões topo */
+:root[data-theme="light"] .icon-btn{
+  border-color: rgba(0,0,0,.10) !important;
+  background: rgba(0,0,0,.03) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn:hover{
+  background: rgba(0,0,0,.05) !important;
+  border-color: rgba(0,0,0,.14) !important;
+}
+:root[data-theme="light"] .icon-btn i{
+  opacity: .9 !important;
+}
+
+/* painéis */
+:root[data-theme="light"] .panel{
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72)) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+}
+:root[data-theme="light"] .panel-head{
+  border-bottom-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .panel-head h3{
+  color: rgba(18,19,24,.85) !important;
+}
+
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+
+/* cards internos */
+:root[data-theme="light"] .mini-card,
+:root[data-theme="light"] .next-box{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+
+:root[data-theme="light"] .mini-label,
+:root[data-theme="light"] .next-sub{
+  color: rgba(18,19,24,.55) !important;
+}
+
+:root[data-theme="light"] .now-box{
+  background: rgba(255,122,0,.10) !important;
+  border-color: rgba(255,122,0,.25) !important;
+}
+
+:root[data-theme="light"] .now-title{
+  color: rgba(18,19,24,.70) !important;
+}
+:root[data-theme="light"] .now-text{
+  color: rgba(18,19,24,.82) !important;
+}
+
+:root[data-theme="light"] .next-title{
+  color: rgba(18,19,24,.65) !important;
+}
+
+/* botões */
+:root[data-theme="light"] .btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: rgba(18,19,24,.90) !important;
+}
+:root[data-theme="light"] .btn:hover{
+  background: rgba(0,0,0,.05) !important;
+}
+
+:root[data-theme="light"] .btn-primary{
+  background: var(--accent) !important;
+  border-color: rgba(255,122,0,.55) !important;
+  color: #0b0c0e !important;
+}
+
+/* badges */
+:root[data-theme="light"] .badge-wait{
+  color: rgba(120,60,0,.92) !important;
+  background: rgba(255,122,0,.14) !important;
+  border-color: rgba(255,122,0,.28) !important;
+}
+
+/* ✅ SELECT: no claro NÃO pode ficar forçado dark */
+:root[data-theme="light"] select,
+:root[data-theme="light"] .queue-picker__select,
+:root[data-theme="light"] select.select-dark,
+:root[data-theme="light"] select.input-like{
+  color-scheme: light !important;
+  background: rgba(255,255,255,.92) !important;
+  color: rgba(18,19,24,.90) !important;
+  border-color: rgba(0,0,0,.12) !important;
+}
+
+:root[data-theme="light"] select option,
+:root[data-theme="light"] select.select-dark option,
+:root[data-theme="light"] select.input-like option{
+  background: #ffffff !important;
+  color: rgba(18,19,24,.90) !important;
+}
+
+/* =========================================================
+   🔥 FIX DE LEGIBILIDADE (TEMA CLARO) — Atendimento
+   Cole como ÚLTIMA coisa do style_atendimento.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --text:#111318;
+  --muted:#4a4f5a;
+  --muted2:#6a717e;
+  --stroke: rgba(0,0,0,.12);
+}
+
+/* Base */
+:root[data-theme="light"] body{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Sidebar/topbar */
+:root[data-theme="light"] .sidebar{
+  background: #ffffff !important;
+  border-right-color: var(--stroke) !important;
+}
+:root[data-theme="light"] .topbar{
+  background: #ffffff !important;
+  border-bottom-color: var(--stroke) !important;
+}
+:root[data-theme="light"] .estab,
+:root[data-theme="light"] .brand-name{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .brand-sub,
+:root[data-theme="light"] .sidebar-footer{
+  color: var(--muted2) !important;
+}
+
+/* Links da nav (estavam brancos) */
+:root[data-theme="light"] .nav a{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .nav a i{
+  color: var(--text) !important;
+  opacity: .75 !important;
+}
+:root[data-theme="light"] .nav a:hover{
+  background: rgba(0,0,0,.04) !important;
+  border-color: rgba(0,0,0,.06) !important;
+}
+:root[data-theme="light"] .nav-sep{
+  border-top-color: rgba(0,0,0,.08) !important;
+}
+
+/* Botões do topo */
+:root[data-theme="light"] .icon-btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn i{
+  color: var(--text) !important;
+  opacity: .85 !important;
+}
+
+/* Títulos e textos gerais */
+:root[data-theme="light"] h1,
+:root[data-theme="light"] h2,
+:root[data-theme="light"] h3{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+
+/* Painéis: força tudo dentro a ficar legível */
+:root[data-theme="light"] .panel{
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .panel *{
+  color: var(--text) !important; /* <-- o que resolve o “apagado” */
+}
+
+/* Mas preserva cores especiais */
+:root[data-theme="light"] .panel .panel-ico{
+  color: #ff7a00 !important;
+}
+:root[data-theme="light"] .panel .badge-wait{
+  color: rgba(120,60,0,.95) !important;
+}
+
+/* Labels/muted (tinham branco com opacity) */
+:root[data-theme="light"] .mini-label,
+:root[data-theme="light"] .next-sub,
+:root[data-theme="light"] .now-title,
+:root[data-theme="light"] .next-title,
+:root[data-theme="light"] #filaInfo{
+  color: var(--muted) !important;
+}
+
+/* Caixas destacadas */
+:root[data-theme="light"] .mini-card,
+:root[data-theme="light"] .next-box{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .now-box{
+  background: rgba(255,122,0,.10) !important;
+  border-color: rgba(255,122,0,.25) !important;
+}
+
+/* Botões */
+:root[data-theme="light"] .btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .btn-primary{
+  background: #ff7a00 !important;
+  border-color: rgba(255,122,0,.55) !important;
+  color: #0b0c0e !important;
+}
+
+/* ✅ Select no claro (se você tinha forçado dark com !important) */
+:root[data-theme="light"] select,
+:root[data-theme="light"] select *{
+  color-scheme: light !important;
+}
+:root[data-theme="light"] select{
+  background: #fff !important;
+  color: var(--text) !important;
+  border-color: rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] select option{
+  background: #fff !important;
+  color: var(--text) !important;
+}
+
+/* ===== FIX SELECT (isolado) ===== */
+/* ===== SETA DO SELECT (SEM WRAP) ===== */
+select{
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23cfcfcf' d='M7 10l5 5 5-5z'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 14px center !important;
+  background-size: 16px !important;
+  padding-right: 42px !important;
+}
+
+/* dropdown (opções) dark */
+select option{
+  background:#141518 !important;
+  color:#fff !important;
+}
+select option[disabled]{
+  color: rgba(255,255,255,.55) !important;
+}
+
+/* ===== Logo da Sidebar (substitui o avatar "A") ===== */
+.avatar.avatar-logo{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+  object-fit: contain;
+  display:block;
+}
+
+/* ==========================================
+   MODAL "CLIENTE COMPARECEU?" — PADRÃO LOGIN
+   ✅ overlay blur
+   ✅ entrada + float
+   ✅ borda fixa (sempre)
+   ✅ trail passando (animado)
+========================================== */
+
+.confirm-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.confirm-modal.show{ display:flex; }
+
+.confirm-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.18);
+  backdrop-filter: blur(6px);
+}
+
+/* entrada */
+@keyframes modalIn{
+  from{ opacity:0; transform: translateY(10px) scale(.96); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+/* float */
+@keyframes floatModal{
+  0% { transform: translateY(0); }
+  33%{ transform: translateY(-6px); }
+  66%{ transform: translateY(-2px); }
+  100%{ transform: translateY(0); }
+}
+
+/* trail */
+@keyframes borderFlow{
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.confirm-card{
+  position: relative;
+  z-index: 2;
+  width: min(560px, 92vw);
+  border-radius: 18px;
+  padding: 26px 22px;
+  text-align: center;
+  color: var(--text, #e9e9ea);
+
+  /* cinza neutro (igual saiu) */
+  background: linear-gradient(180deg, #1a1a1a, #101010);
+  border: 1px solid rgba(255,122,0,.18);
+  box-shadow: 0 22px 60px rgba(0,0,0,.70);
+  backdrop-filter: blur(10px);
+
+  /* camadas */
+  isolation: isolate;
+  overflow: visible !important;
+
+  /* animação base (entrada) */
+  animation: modalIn .22s ease both;
+}
+
+/* quando abrir: entrada + float */
+.confirm-modal.show .confirm-card{
+  animation:
+    modalIn .22s ease both,
+    floatModal 7.5s cubic-bezier(.4,0,.2,1) infinite;
+}
+
+/* conteúdo acima das bordas */
+.confirm-card > *{
+  position: relative;
+  z-index: 5;
+}
+
+/* ===== BORDA FIXA (sempre presente) ===== */
+.confirm-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 3;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,122,0,.16),
+    rgba(255,122,0,.10),
+    rgba(255,122,0,.16)
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ===== TRAIL PASSANDO (animado) ===== */
+.confirm-card::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 4;
+
+  background: linear-gradient(
+    90deg,
+    transparent 40%,
+    rgba(255,154,60,.35),
+    rgba(255,102,0,.70),
+    rgba(255,154,60,.35),
+    transparent 60%
+  );
+
+  background-size: 300% 100%;
+  animation: borderFlow 18s linear infinite;
+
+  filter: drop-shadow(0 0 12px rgba(255,122,0,.26))
+          drop-shadow(0 0 24px rgba(255,122,0,.18));
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ==========================================
+   FINISH OVERLAY (cancelado/finalizado)
+   PADRÃO ANDA LOGO — ÚNICO / DEFINITIVO
+========================================== */
+
+@keyframes finishFloatCenter{
+  0%   { transform: translate(-50%, -50%) translateY(0); }
+  33%  { transform: translate(-50%, -50%) translateY(-6px); }
+  66%  { transform: translate(-50%, -50%) translateY(-2px); }
+  100% { transform: translate(-50%, -50%) translateY(0); }
+}
+
+@keyframes finishBorderFlow{
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+#finishOverlay.finishOverlay{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+#finishOverlay.finishOverlay.show{
+  display: flex !important;
+}
+
+#finishOverlay.finishOverlay::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(6px);
+}
+
+/* CARD */
+#finishOverlay.finishOverlay .finishCard{
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  margin: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: min(640px, 92vw);
+  border-radius: 18px;
+  padding: 32px 26px;
+  text-align:center;
+
+  /* CINZA PADRÃO (igual aos outros) */
+  background: linear-gradient(180deg, #1a1a1a 0%, #101010 100%) !important;
+
+  /* borda base sempre presente */
+  border: 1px solid rgba(255,122,0,.18) !important;
+  box-shadow: 0 22px 60px rgba(0,0,0,.70) !important;
+
+  color: #e9e9ea;
+
+  isolation: isolate;
+  overflow: visible !important;
+
+  /* ✅ FLOAT FUNCIONANDO (com translate -50% preservado) */
+  animation: finishFloatCenter 7.5s cubic-bezier(.4,0,.2,1) infinite !important;
+}
+
+/* conteúdo acima */
+#finishOverlay.finishOverlay .finishCard > *{
+  position: relative;
+  z-index: 5;
+}
+
+/* BORDA FIXA */
+#finishOverlay.finishOverlay .finishCard::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 3;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,122,0,.16),
+    rgba(255,122,0,.10),
+    rgba(255,122,0,.16)
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* BORDA PASSANDO */
+#finishOverlay.finishOverlay .finishCard::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 4;
+
+  background: linear-gradient(
+    90deg,
+    transparent 35%,
+    rgba(255,154,60,.35),
+    rgba(255,102,0,.75),
+    rgba(255,154,60,.35),
+    transparent 65%
+  );
+
+  background-size: 300% 100%;
+  animation: finishBorderFlow 16s linear infinite;
+
+  filter:
+    drop-shadow(0 0 14px rgba(255,122,0,.30))
+    drop-shadow(0 0 28px rgba(255,122,0,.18));
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* TÍTULO ANDA/LOGO */
+#finishOverlay .finishTitle{
+  margin: 0 0 10px 0;
+  font-size: clamp(34px, 6vw, 44px);
+  font-weight: 900;
+  letter-spacing: .6px;
+  line-height: 1;
+}
+
+#finishOverlay .title-orange{
+  color: #ff6600;
+  font-weight: 900;
+}
+
+#finishOverlay .title-white{
+  color: rgba(255,255,255,.55);
+  font-weight: 900;
+}
+
+/* TEXTOS */
+#finishOverlay .finishMsg{
+  margin: 10px 0 10px;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+#finishOverlay .finishSub{
+  margin: 0 0 12px;
+  color: rgba(233,233,234,.72);
+}
+
+#finishOverlay .finishTip{
+  margin: 12px auto 18px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(233,233,234,.78);
+  max-width: 480px;
+}
+
+/* BOTÃO */
+#finishOverlay .finishBtn{
+  width: 100%;
+  border: 1px solid rgba(255,122,0,.55);
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+
+  background: linear-gradient(180deg, #ff8f2a, #ff6600);
+  color: #111;
+}
+
+#finishOverlay .finishBtn:hover{ transform: translateY(-1px); }
+#finishOverlay .finishBtn:active{ transform: translateY(0); }
+
+/* ===== ANDA LOGO — igual ao modal padrão ===== */
+
+#finishOverlay .finishTitle{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 42px !important;      /* tamanho fixo igual padrão */
+  letter-spacing: 0px !important;  /* remove espaçamento extra */
+  line-height: 1 !important;
+}
+
+/* ANDA */
+#finishOverlay .title-orange{
+  color: #ff6600 !important;
+  font-weight: 800 !important;
+}
+
+/* LOGO */
+#finishOverlay .title-white{
+  color: rgba(255,255,255,.55) !important;
+  font-weight: 800 !important;
+}
+
+/* ===== ANDA LOGO idêntico ao padrão da segunda print ===== */
+
+#finishOverlay .finishTitle{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+
+  font-weight: 800 !important;          /* menos pesado */
+  font-size: 38px !important;           /* menor que antes */
+  letter-spacing: -0.5px !important;    /* deixa mais compacto */
+  line-height: 1 !important;
+
+  -webkit-font-smoothing: antialiased;  /* suaviza igual padrão */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ANDA LOGO — padrão do modal "saiu" */
+#finishOverlay .finishTitle{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: .6px !important;
+  line-height: 1 !important;
+  margin-bottom: 10px !important;
+
+  /* mesmo comportamento do outro */
+  text-transform: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#finishOverlay .finishTitle .title-orange{
+  color: var(--accent, #ff7a00) !important;
+  font-weight: 900 !important;
+}
+
+#finishOverlay .finishTitle .title-white{
+  color: #FFFFFF8C !important;
+  font-weight: 900 !important;
+  margin-left: 2px !important;
+}
+
+/* =========================================================
+   CALL MODAL (Chamando cliente) — PADRÃO ANDA LOGO
+   ✅ centralizado
+   ✅ blur
+   ✅ borda fixa + borda passando
+   ✅ float suave
+========================================================= */
+
+@keyframes callFloatCenter{
+  0%   { transform: translate(-50%, -50%) translateY(0); }
+  33%  { transform: translate(-50%, -50%) translateY(-6px); }
+  66%  { transform: translate(-50%, -50%) translateY(-2px); }
+  100% { transform: translate(-50%, -50%) translateY(0); }
+}
+
+@keyframes callBorderFlow{
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* overlay */
+#callModal.call-modal{
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+}
+
+#callModal.call-modal.show{
+  display: flex !important;
+}
+
+/* fundo com blur */
+#callModal .call-overlay{
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,.72) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+/* card */
+#callModal .call-box{
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  width: min(520px, 92vw) !important;
+  border-radius: 18px !important;
+  padding: 22px 22px !important;
+  text-align: center !important;
+
+  background: linear-gradient(180deg, #1a1a1a 0%, #101010 100%) !important;
+  border: 1px solid rgba(255,122,0,.18) !important;
+  box-shadow: 0 22px 60px rgba(0,0,0,.70) !important;
+  color: #e9e9ea !important;
+
+  isolation: isolate !important;
+  overflow: visible !important;
+
+  /* ✅ mantém centralização e faz o float */
+  animation: callFloatCenter 7.5s cubic-bezier(.4,0,.2,1) infinite !important;
+  z-index: 2 !important;
+
+  /* remove qualquer margem antiga que possa puxar pro lado */
+  margin: 0 !important;
+}
+
+/* conteúdo acima das bordas */
+#callModal .call-box > *{
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* borda fixa */
+#callModal .call-box::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 3;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,122,0,.16),
+    rgba(255,122,0,.10),
+    rgba(255,122,0,.16)
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* borda passando */
+#callModal .call-box::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 4;
+
+  background: linear-gradient(
+    90deg,
+    transparent 35%,
+    rgba(255,154,60,.35),
+    rgba(255,102,0,.75),
+    rgba(255,154,60,.35),
+    transparent 65%
+  );
+  background-size: 300% 100%;
+  animation: callBorderFlow 16s linear infinite;
+
+  filter:
+    drop-shadow(0 0 14px rgba(255,122,0,.30))
+    drop-shadow(0 0 28px rgba(255,122,0,.18));
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* tipografia (padrão) */
+#callModal .call-box h2{
+  font-size: 13px !important;
+  color: rgba(233,233,234,.70) !important;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}
+
+#callModal #callNome{
+  font-size: 30px !important;
+  font-weight: 900 !important;
+  letter-spacing: -.3px !important;
+  margin: 0 0 6px !important;
+}
+
+#callModal #callPosicao{
+  display: inline-block !important;
+  font-size: 12px !important;
+  color: rgba(233,233,234,.70) !important;
+
+  padding: 10px 14px !important;
+  border-radius: 999px !important;
+
+  background: rgba(0,0,0,.18) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
 }

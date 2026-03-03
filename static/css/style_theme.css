@@ -1,0 +1,59 @@
+/* /static/css/theme_base.css
+   Base mínima para DARK/LIGHT com boa legibilidade
+*/
+
+:root{
+  /* dark default */
+  --bg:#0b0c0e;
+  --surface:#121218;
+  --card:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.12);
+
+  --text:#f4f5f7;
+  --muted:rgba(244,245,247,.70);
+
+  --accent:#ff7a00;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --surface:#ffffff;
+  --card:rgba(0,0,0,.04);
+  --stroke:rgba(0,0,0,.10);
+
+  --text:#121318;
+  --muted:rgba(18,19,24,.70);
+
+  --accent:#ff7a00;
+
+  color-scheme: light;
+}
+
+/* Base de leitura */
+html, body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Se seu layout usa containers/painéis */
+.panel, .card, .modal, .confirm-card, .finishCard, .call-box{
+  color: var(--text);
+}
+
+/* Textos “apagados” no claro (evita branco quase invisível) */
+.muted, .subtitle, .panel-sub, .mini-label{
+  color: var(--muted) !important;
+}
+
+/* Inputs/selects legíveis em ambos */
+input, select, textarea{
+  color: var(--text);
+}
+
+/* Caso seus botões/ícones usem opacity baixa no claro */
+:root[data-theme="light"] .icon-btn i{
+  color: var(--text);
+  opacity: .9;
+}

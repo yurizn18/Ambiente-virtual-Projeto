@@ -99,16 +99,27 @@ body{
   box-shadow:0 0 0 4px rgba(43,213,118,.15);
 }
 .estab b{color:#fff;font-weight:800}
+
 .top-actions{display:flex;align-items:center;gap:10px}
+
+/* ✅ BOTÕES DO TOPO (padronizados como o correto) */
 .icon-btn{
   width:42px;height:42px;border-radius:14px;
   border:1px solid rgba(255,255,255,.08);
   background:rgba(255,255,255,.03);
-  color:#fff;display:grid;place-items:center;
-  cursor:pointer;transition:.2s ease;
+  color:#fff;
+  display:grid;place-items:center;
+  cursor:pointer;
+  transition:.2s ease;
+  padding:0;
 }
-.icon-btn:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);transform:translateY(-1px)}
-.icon-btn i{font-size:18px;opacity:.9}
+.icon-btn:hover{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.12);
+  transform:translateY(-1px);
+}
+.icon-btn i{font-size:18px;opacity:.9;line-height:1}
+
 .mobile-top{display:none;align-items:center;gap:10px}
 
 /* Backdrop */
@@ -339,4 +350,186 @@ h1{margin:8px 0 4px;font-size:34px;letter-spacing:-.6px}
   .topbar{padding:0 14px}
   h1{font-size:28px}
   .qr-box{width:230px;height:230px}
+}
+
+/* ===========================
+   ✅ PATCH TEMA CLARO — IGUAL AO ATENDIMENTO
+   (cole SEMPRE no final)
+=========================== */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --border:rgba(0,0,0,.10);
+  --muted:rgba(18,19,24,.70);
+  --muted2:rgba(18,19,24,.55);
+  --text:#121318;
+
+  --accent:#ff7a00;
+  --accent2:#ff8f2a;
+  --success:#2bd576;
+}
+
+:root[data-theme="light"] body{
+  background:
+    radial-gradient(1200px 700px at 30% 0%, rgba(255,122,0,.10), transparent 55%),
+    radial-gradient(900px 600px at 80% 20%, rgba(0,0,0,.05), transparent 55%),
+    var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Sidebar/topbar */
+:root[data-theme="light"] .sidebar{
+  background: linear-gradient(180deg, #ffffff 0%, #f3f5fb 100%) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+:root[data-theme="light"] .brand-sub{
+  color: var(--muted2) !important;
+}
+
+:root[data-theme="light"] .nav a{
+  color: rgba(18,19,24,.82) !important;
+}
+
+:root[data-theme="light"] .nav a:hover{
+  background: rgba(0,0,0,.04) !important;
+  border-color: rgba(0,0,0,.06) !important;
+}
+
+:root[data-theme="light"] .nav-sep{
+  border-top-color: rgba(0,0,0,.08) !important;
+}
+
+:root[data-theme="light"] .sidebar-footer{
+  border-top-color: rgba(0,0,0,.08) !important;
+  color: rgba(18,19,24,.55) !important;
+}
+
+:root[data-theme="light"] .topbar{
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72)) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+:root[data-theme="light"] .estab{
+  color: rgba(18,19,24,.78) !important;
+}
+
+:root[data-theme="light"] .estab b{
+  color: var(--text) !important;
+}
+
+/* botões topo */
+:root[data-theme="light"] .icon-btn{
+  border-color: rgba(0,0,0,.10) !important;
+  background: rgba(0,0,0,.03) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn:hover{
+  background: rgba(0,0,0,.05) !important;
+  border-color: rgba(0,0,0,.14) !important;
+}
+:root[data-theme="light"] .icon-btn i{
+  opacity: .9 !important;
+}
+
+/* Painéis */
+:root[data-theme="light"] .panel{
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .panel *{
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .panel-head{
+  border-bottom-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .panel-head h3{
+  color: rgba(18,19,24,.85) !important;
+}
+
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+
+/* lista esquerda */
+:root[data-theme="light"] .queue-card{
+  border-color: rgba(255,122,0,.22) !important;
+  background: rgba(255,122,0,.10) !important;
+}
+:root[data-theme="light"] .queue-sub{
+  color: rgba(18,19,24,.65) !important;
+}
+:root[data-theme="light"] .queue-card.inactive{
+  border-color: rgba(0,0,0,.10) !important;
+  background: rgba(0,0,0,.03) !important;
+}
+:root[data-theme="light"] .queue-card.inactive .badge{
+  border-color: rgba(0,0,0,.12) !important;
+  background: rgba(0,0,0,.04) !important;
+  color: rgba(18,19,24,.65) !important;
+}
+
+/* link box */
+:root[data-theme="light"] .link-box{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+}
+:root[data-theme="light"] .link-title{
+  color: rgba(18,19,24,.60) !important;
+}
+:root[data-theme="light"] .link-url{
+  color: rgba(255,122,0,.95) !important;
+}
+:root[data-theme="light"] .open-btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: rgba(18,19,24,.90) !important;
+}
+
+/* botões */
+:root[data-theme="light"] .btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: rgba(18,19,24,.90) !important;
+}
+:root[data-theme="light"] .btn:hover{
+  background: rgba(0,0,0,.05) !important;
+}
+:root[data-theme="light"] .btn-primary{
+  background: var(--accent) !important;
+  border-color: rgba(255,122,0,.55) !important;
+  color: #0b0c0e !important;
+}
+
+/* toast */
+:root[data-theme="light"] .toast{
+  background: rgba(0,0,0,.78) !important;
+  border-color: rgba(255,255,255,.12) !important;
+  color: #fff !important;
+}
+
+/* ===== Logo da Sidebar (substitui o avatar "A") ===== */
+.avatar.avatar-logo{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+  object-fit: contain;
+  display:block;
 }

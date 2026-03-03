@@ -1,3 +1,62 @@
+console.log("[AO VIVO] app_fila_ao_vivo.js carregou");
+
+(function syncNomeEstab() {
+  const ja = localStorage.getItem("nomeEstabelecimento");
+  if (ja && ja.trim()) return;
+
+  const n = localStorage.getItem("estabelecimento_nome");
+  if (n && n.trim()) localStorage.setItem("nomeEstabelecimento", n.trim());
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const nome =
+    localStorage.getItem("nomeEstabelecimento") ||
+    localStorage.getItem("estabelecimento_nome") ||
+    "—";
+
+  const el = document.getElementById("nomeEstabelecimento");
+  const header = document.getElementById("estabHeader");
+
+  if (el) el.textContent = nome;
+  if (header) header.title = `Estabelecimento: ${nome}`;
+});
+// ===============================
+// ESTABELECIMENTO (nome dinâmico)
+// ===============================
+function obterNomeEstabelecimento() {
+  const direct =
+    localStorage.getItem("nomeEstabelecimento") ||
+    localStorage.getItem("estabelecimento_nome") ||
+    localStorage.getItem("nome_estabelecimento") ||
+    localStorage.getItem("estab_nome");
+
+  if (direct && direct.trim()) return direct.trim();
+
+  const possibleJsonKeys = ["estabelecimento", "biz", "usuarioEstab"];
+  for (const k of possibleJsonKeys) {
+    const raw = localStorage.getItem(k);
+    if (!raw) continue;
+    try {
+      const obj = JSON.parse(raw);
+      const name = obj?.nome || obj?.nomeEstabelecimento || obj?.estabelecimento_nome;
+      if (name && String(name).trim()) return String(name).trim();
+    } catch {}
+  }
+
+  return null;
+}
+
+function preencherNomeNoTopo() {
+  const nome = obterNomeEstabelecimento();
+  const el = document.getElementById("nomeEstabelecimento");
+  const header = document.getElementById("estabHeader");
+
+  if (el) el.textContent = nome || "—";
+  if (header) header.title = `Estabelecimento: ${nome || "—"}`;
+}
+
+document.addEventListener("DOMContentLoaded", preencherNomeNoTopo);
+
 // ===== Sidebar mobile (somente nesta página) =====
 const sidebar = document.getElementById("sidebar");
 const backdrop = document.getElementById("backdrop");
@@ -48,7 +107,6 @@ function statusPill(s){
 }
 
 function normalizarCliente(c){
-  // aceita tanto {num,...} quanto {pos,...}
   const num = Number.isFinite(Number(c.num)) ? Number(c.num) : Number(c.pos || 0);
   return {
     num,
@@ -73,8 +131,6 @@ function carregarClientes(){
     return;
   }
   clientes = lerJSON(clientesKey(filaAtualId), []).map(normalizarCliente);
-
-  // garante ordenação por número
   clientes.sort((a,b) => a.num - b.num);
 }
 
@@ -106,19 +162,19 @@ function itemTemplate(item){
 }
 
 function render(){
-  queueCountLabel.textContent = `Aguardando (${clientes.length})`;
+  if (queueCountLabel) queueCountLabel.textContent = `Aguardando (${clientes.length})`;
 
   if (!filaAtualId){
-    queueList.innerHTML = `<p style="opacity:.6;font-size:12px">Selecione uma fila para visualizar os clientes.</p>`;
+    if (queueList) queueList.innerHTML = `<p style="opacity:.6;font-size:12px">Selecione uma fila para visualizar os clientes.</p>`;
     return;
   }
 
   if (!clientes.length){
-    queueList.innerHTML = `<p style="opacity:.6;font-size:12px">Nenhum cliente na fila.</p>`;
+    if (queueList) queueList.innerHTML = `<p style="opacity:.6;font-size:12px">Nenhum cliente na fila.</p>`;
     return;
   }
 
-  queueList.innerHTML = clientes.map(itemTemplate).join("");
+  if (queueList) queueList.innerHTML = clientes.map(itemTemplate).join("");
 
   // Alterna status "no raio" / "fora" e salva
   queueList.querySelectorAll(".more-btn").forEach((btn) => {
@@ -130,9 +186,7 @@ function render(){
 
       clientes[idx].status = clientes[idx].status === "no_raio" ? "fora" : "no_raio";
 
-      // salva de volta no storage mantendo o formato {num,...}
       salvarJSON(clientesKey(filaAtualId), clientes);
-
       render();
     });
   });

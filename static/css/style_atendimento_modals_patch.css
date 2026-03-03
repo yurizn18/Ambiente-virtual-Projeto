@@ -1,0 +1,173 @@
+/* =========================
+   PATCH MODAIS - ANDALOGO
+   Centralização + z-index + scroll lock
+========================= */
+
+body.lock {
+  overflow: hidden;
+}
+
+/* ---------- Modal "compareceu?" ---------- */
+.confirm-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 99999;
+}
+
+.confirm-modal.show{
+  display: flex;
+}
+
+.confirm-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(6px);
+}
+
+.confirm-card{
+  position: relative;
+  z-index: 2;
+  width: min(520px, 92vw);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(18,18,24,.92);
+  box-shadow: 0 30px 90px rgba(0,0,0,.85);
+  padding: 22px 20px;
+  color: #fff;
+  animation: modalPop .18s ease;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.confirm-title{
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.confirm-sub{
+  opacity: .85;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.confirm-client{
+  font-weight: 900;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  margin-bottom: 14px;
+}
+
+.confirm-actions{
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.confirm-btn{
+  flex: 1 1 180px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: 12px 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.confirm-btn.primary{
+  background: #ff7a00;
+  color: #0b0c0e;
+  border-color: rgba(255,122,0,.55);
+  box-shadow: 0 14px 30px rgba(255,122,0,.18);
+}
+
+.confirm-btn.ghost:hover{
+  background: rgba(255,255,255,.10);
+}
+
+.confirm-hint{
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: .72;
+}
+
+/* ---------- Overlay finalizado/cancelado ---------- */
+.finishOverlay{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 99998;
+}
+
+.finishOverlay.show{ display: flex; }
+
+.finishOverlay::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(6px);
+}
+
+.finishCard{
+  position: relative;
+  z-index: 2;
+  width: min(560px, 92vw);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(18,18,24,.92);
+  box-shadow: 0 30px 90px rgba(0,0,0,.85);
+  padding: 26px 22px;
+  text-align: center;
+  color: #fff;
+  animation: modalPop .18s ease;
+}
+
+/* ---------- Modal "Chamando cliente" ---------- */
+.call-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99997;
+}
+
+.call-modal.show{
+  display: block;
+}
+
+.call-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+}
+
+.call-box{
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  width: min(420px, 92vw);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(18,18,24,.92);
+  box-shadow: 0 20px 60px rgba(0,0,0,.75);
+  padding: 18px 16px;
+  color: #fff;
+  text-align: center;
+}

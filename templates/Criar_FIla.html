@@ -13,8 +13,11 @@
   <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/static/css/style_criar_fila.css">
+  <!-- ✅ Base do tema (igual Atendimento) -->
+  <link rel="stylesheet" href="/static/css/theme_base.css">
+
+  <!-- CSS exclusivo -->
+  <link rel="stylesheet" href="/static/css/style_criar_fila.css?v=20260301_1">
 </head>
 
 <body>
@@ -22,7 +25,9 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="avatar">A</div>
+        <div class="avatar avatar-logo">
+          <img src="/assets/img/NAV3.png" alt="ANDA LOGO" class="brand-logo">
+        </div>
         <div class="brand-meta">
           <div class="brand-name">ANDA LOGO</div>
           <div class="brand-sub">Painel do Estabelecimento</div>
@@ -51,20 +56,28 @@
     <main class="content">
       <header class="topbar">
         <div class="mobile-top">
-          <button id="menuBtn" class="icon-btn" aria-label="Abrir menu">
+          <button id="menuBtn" class="icon-btn" aria-label="Abrir menu" type="button">
             <i class="bi bi-list"></i>
           </button>
         </div>
 
-        <div class="estab" title="Estabelecimento: Barbearia Premium">
+        <!-- ✅ dinâmico -->
+        <div class="estab" id="estabHeader" title="Estabelecimento">
           <span class="dot"></span>
           <span>Estabelecimento:</span>
-          <b>&nbsp;Barbearia Premium</b>
+          <b>&nbsp;<span id="nomeEstabelecimento">—</span></b>
         </div>
 
+        <!-- ✅ ÍCONES PADRÃO (igual Atendimento/Dashboard) -->
         <div class="top-actions">
-          <button class="icon-btn" title="Notificações"><i class="bi bi-bell"></i></button>
-          <button class="icon-btn" title="Tema"><i class="bi bi-sun"></i></button>
+          <button class="icon-btn" type="button" title="Notificações">
+            <i class="bi bi-bell"></i>
+          </button>
+
+          <!-- ✅ toggle real do tema -->
+          <button class="icon-btn" type="button" data-theme-toggle title="Tema">
+            <i class="bi bi-sun"></i>
+          </button>
         </div>
       </header>
 
@@ -161,21 +174,15 @@
               </button>
             </div>
           </div>
-
-          <!-- RIGHT -->
-          <div class="panel">
-            <div class="panel-head">
-              <h3>Filas existentes</h3>
-            </div>
-
-            <!-- Agora a lista é preenchida pelo JS -->
-            <div id="listaFilas"></div>
-          </div>
         </div>
       </section>
     </main>
   </div>
 
+  <!-- ✅ CORRETO: app_theme.js (igual Atendimento/Dashboard) -->
+  <script src="/static/js/app_theme.js"></script>
+
+  <!-- JS da página -->
   <script src="/static/js/app_criar_fila.js"></script>
 </body>
 </html>

@@ -1,3 +1,42 @@
+// ===============================
+// ESTABELECIMENTO (nome dinâmico)
+// ===============================
+function obterNomeEstabelecimento() {
+  // tenta em várias chaves (pra funcionar mesmo antes de eu ver teu login)
+  const direct =
+    localStorage.getItem("nomeEstabelecimento") ||
+    localStorage.getItem("estabelecimento_nome") ||
+    localStorage.getItem("nome_estabelecimento") ||
+    localStorage.getItem("estab_nome");
+
+  if (direct && direct.trim()) return direct.trim();
+
+  // tenta objeto salvo em JSON (se existir)
+  const possibleJsonKeys = ["estabelecimento", "biz", "usuarioEstab"];
+  for (const k of possibleJsonKeys) {
+    const raw = localStorage.getItem(k);
+    if (!raw) continue;
+    try {
+      const obj = JSON.parse(raw);
+      const name = obj?.nome || obj?.nomeEstabelecimento || obj?.estabelecimento_nome;
+      if (name && String(name).trim()) return String(name).trim();
+    } catch {}
+  }
+
+  return null;
+}
+
+function preencherNomeNoTopo() {
+  const nome = obterNomeEstabelecimento();
+  const el = document.getElementById("nomeEstabelecimento");
+  const header = document.getElementById("estabHeader");
+
+  if (el) el.textContent = nome || "—";
+  if (header) header.title = `Estabelecimento: ${nome || "—"}`;
+}
+
+document.addEventListener("DOMContentLoaded", preencherNomeNoTopo);
+
 // Sidebar mobile (apenas para esta página)
 const sidebar = document.getElementById("sidebar");
 const backdrop = document.getElementById("backdrop");
@@ -95,9 +134,6 @@ async function postJSON(path, data) {
 
 // ===============================
 // render lado direito (filas existentes)
-// agora mostra:
-// - ID do banco (idFila) quando existir
-// - e também o id local (fila_xxx) se você quiser manter
 // ===============================
 function renderFilas(){
   if (!listaFilas) return;
@@ -174,10 +210,10 @@ if (btnSalvar){
       // ✅ cria no banco
       const resp = await postJSON("/api/filas", payloadAPI);
 
-      // ✅ mantém também um “espelho” no localStorage (opcional, mas útil pro painel)
+      // ✅ mantém também um “espelho” no localStorage (opcional)
       const novaFilaLocal = {
-        id: gerarID(), // id local (não é o id do banco)
-        idFila: resp?.idFila, // id do banco
+        id: gerarID(),
+        idFila: resp?.idFila,
         nome,
         endereco,
         raio: payloadAPI.raio_metros,
@@ -192,13 +228,12 @@ if (btnSalvar){
       };
 
       const filas = obterFilas();
-      filas.unshift(novaFilaLocal); // coloca no topo
+      filas.unshift(novaFilaLocal);
       salvarFilas(filas);
       renderFilas();
 
       alert(`Fila criada no banco! ID: ${resp.idFila}`);
 
-      // limpa form (mantém raio e ativa como estão)
       if (nomeFila) nomeFila.value = "";
       if (enderecoFila) enderecoFila.value = "";
       if (msgBoasVindas) msgBoasVindas.value = "";

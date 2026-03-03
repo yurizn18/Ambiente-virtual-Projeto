@@ -146,12 +146,16 @@ h1{margin:8px 0 4px;font-size:34px;letter-spacing:-.6px}
 
 /* ==== Criar Fila (conteúdo) ==== */
 .grid-create{
-  display:grid;
-  grid-template-columns: 1.1fr .55fr;
-  gap:14px;
-  align-items:start;
+  display:block;          /* vira 1 coluna */
 }
-.stack{display:flex;flex-direction:column;gap:14px}
+
+.stack{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  width:100%;
+  max-width: 980px;       /* deixa igual sua print (não fica esticado demais) */
+}
 
 .panel{
   border-radius:16px;
@@ -265,6 +269,7 @@ input:focus, textarea:focus{
   background:var(--accent);
 }
 
+/* Lista de filas (cards) */
 .queue-item{
   display:flex;
   align-items:flex-start;
@@ -335,4 +340,464 @@ input:focus, textarea:focus{
   .page{padding:18px}
   .topbar{padding:0 14px}
   h1{font-size:28px}
+}
+
+/* Tema claro/escuro via data-theme no <html> */
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+
+/* =========================================================
+   ✅ PATCH TEMA CLARO — Criar Fila (IDÊNTICO ao Atendimento)
+   Cole no FINAL do style_criar_fila.css (já está aqui)
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --text:#111318;
+  --muted:#4a4f5a;
+  --muted2:#6a717e;
+  --stroke: rgba(0,0,0,.12);
+
+  --accent:#ff7a00;
+  --accent2:#ff8f2a;
+  --success:#2bd576;
+}
+
+/* Base */
+:root[data-theme="light"] body{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Sidebar/topbar */
+:root[data-theme="light"] .sidebar{
+  background: #ffffff !important;
+  border-right-color: var(--stroke) !important;
+}
+:root[data-theme="light"] .topbar{
+  background: #ffffff !important;
+  border-bottom-color: var(--stroke) !important;
+}
+:root[data-theme="light"] .estab,
+:root[data-theme="light"] .brand-name{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .brand-sub,
+:root[data-theme="light"] .sidebar-footer{
+  color: var(--muted2) !important;
+}
+
+/* Links nav */
+:root[data-theme="light"] .nav a{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .nav a i{
+  color: var(--text) !important;
+  opacity: .75 !important;
+}
+:root[data-theme="light"] .nav a:hover{
+  background: rgba(0,0,0,.04) !important;
+  border-color: rgba(0,0,0,.06) !important;
+}
+:root[data-theme="light"] .nav-sep{
+  border-top-color: rgba(0,0,0,.08) !important;
+}
+
+/* Botões do topo */
+:root[data-theme="light"] .icon-btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn i{
+  color: var(--text) !important;
+  opacity: .85 !important;
+}
+
+/* Títulos */
+:root[data-theme="light"] h1,
+:root[data-theme="light"] h2,
+:root[data-theme="light"] h3{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+
+/* Painéis: força legibilidade interna (igual Atendimento) */
+:root[data-theme="light"] .panel{
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .panel *{
+  color: var(--text) !important;
+}
+
+/* preserva cores especiais */
+:root[data-theme="light"] .accent{ color: #ff7a00 !important; }
+:root[data-theme="light"] .dot{ box-shadow: 0 0 0 4px rgba(43,213,118,.15) !important; }
+
+/* Labels/muted */
+:root[data-theme="light"] .muted,
+:root[data-theme="light"] .toggle-text,
+:root[data-theme="light"] .range-scale{
+  color: var(--muted) !important;
+}
+:root[data-theme="light"] .field label{
+  color: rgba(18,19,24,.78) !important;
+}
+
+/* Inputs/textarea (sem branco ilegível) */
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea{
+  background: #ffffff !important;
+  color: var(--text) !important;
+  border-color: rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder{
+  color: rgba(18,19,24,.45) !important;
+}
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] textarea:focus{
+  border-color: rgba(255,122,0,.45) !important;
+  box-shadow: 0 0 0 3px rgba(255,122,0,.14) !important;
+}
+
+/* Range */
+:root[data-theme="light"] .range{
+  background: rgba(0,0,0,.10) !important;
+}
+
+/* Queue cards (lista) */
+:root[data-theme="light"] .queue-item{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .queue-sub{
+  color: var(--muted) !important;
+}
+
+/* Badge */
+:root[data-theme="light"] .badge-on{
+  color: rgba(120,60,0,.95) !important;
+  background: rgba(255,122,0,.14) !important;
+  border-color: rgba(255,122,0,.28) !important;
+}
+
+/* Botão primário (igual Atendimento) */
+:root[data-theme="light"] .btn-primary{
+  background: #ff7a00 !important;
+  border-color: rgba(255,122,0,.55) !important;
+  color: #0b0c0e !important;
+}
+
+/* Switch */
+:root[data-theme="light"] .slider{
+  background: rgba(0,0,0,.08) !important;
+  border-color: rgba(0,0,0,.10) !important;
+}
+
+/* =========================================================
+   ✅ FIX DEFINITIVO DE LEGIBILIDADE — LIGHT (Criar Fila)
+   Cole como ÚLTIMA coisa do style_criar_fila.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --text:#111318;
+  --muted:#4a4f5a;
+  --muted2:#6a717e;
+  --stroke: rgba(0,0,0,.12);
+}
+
+/* Base */
+:root[data-theme="light"] body{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Sidebar/topbar (mesmo padrão do Atendimento) */
+:root[data-theme="light"] .sidebar{
+  background: #ffffff !important;
+  border-right-color: var(--stroke) !important;
+}
+:root[data-theme="light"] .topbar{
+  background: #ffffff !important;
+  border-bottom-color: var(--stroke) !important;
+}
+:root[data-theme="light"] .brand-name,
+:root[data-theme="light"] .estab,
+:root[data-theme="light"] .estab b{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .brand-sub,
+:root[data-theme="light"] .sidebar-footer{
+  color: var(--muted2) !important;
+}
+:root[data-theme="light"] .nav a{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .nav a i{
+  color: var(--text) !important;
+  opacity: .75 !important;
+}
+:root[data-theme="light"] .nav a:hover{
+  background: rgba(0,0,0,.04) !important;
+  border-color: rgba(0,0,0,.06) !important;
+}
+:root[data-theme="light"] .nav-sep{
+  border-top-color: rgba(0,0,0,.08) !important;
+}
+
+/* ÍCONES DO TOPO (padrão correto) */
+:root[data-theme="light"] .icon-btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn:hover{
+  background: rgba(0,0,0,.05) !important;
+  border-color: rgba(0,0,0,.14) !important;
+}
+:root[data-theme="light"] .icon-btn i{
+  color: var(--text) !important;
+  opacity: .85 !important;
+}
+
+/* Títulos gerais */
+:root[data-theme="light"] .page h1,
+:root[data-theme="light"] .page h2,
+:root[data-theme="light"] .page h3{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+
+/* PANELS (o principal do bug) */
+:root[data-theme="light"] .panel{
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .panel-head{
+  border-bottom-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .panel-head h3{
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+/* Labels / muted / textos auxiliares */
+:root[data-theme="light"] .field label{
+  color: rgba(18,19,24,.78) !important;
+}
+:root[data-theme="light"] .muted,
+:root[data-theme="light"] .toggle-text,
+:root[data-theme="light"] .range-scale{
+  color: var(--muted) !important;
+}
+:root[data-theme="light"] .req{
+  color: rgba(18,19,24,.45) !important;
+}
+
+/* Inputs / textarea */
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea{
+  background: #ffffff !important;
+  color: var(--text) !important;
+  border-color: rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder{
+  color: rgba(18,19,24,.45) !important;
+}
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] textarea:focus{
+  border-color: rgba(255,122,0,.45) !important;
+  box-shadow: 0 0 0 3px rgba(255,122,0,.14) !important;
+}
+
+/* Range */
+:root[data-theme="light"] .range{
+  background: rgba(0,0,0,.10) !important;
+}
+:root[data-theme="light"] .accent{
+  color: #ff7a00 !important;
+}
+
+/* Lista de filas */
+:root[data-theme="light"] .queue-item{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .queue-title{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .queue-sub{
+  color: var(--muted) !important;
+}
+
+/* Badge */
+:root[data-theme="light"] .badge-on{
+  color: rgba(120,60,0,.95) !important;
+  background: rgba(255,122,0,.14) !important;
+  border-color: rgba(255,122,0,.28) !important;
+}
+
+/* Switch */
+:root[data-theme="light"] .slider{
+  background: rgba(0,0,0,.08) !important;
+  border-color: rgba(0,0,0,.10) !important;
+}
+
+/* =========================================================
+   🔥 PATCH HARD (LIGHT) — força legibilidade dentro dos panels
+   Cole COMO ÚLTIMA coisa do style_criar_fila.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb !important;
+  --text:#111318 !important;
+  --muted:#4a4f5a !important;
+  --muted2:#6a717e !important;
+  --stroke: rgba(0,0,0,.12) !important;
+}
+
+/* base */
+:root[data-theme="light"] body{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* sidebar/topbar */
+:root[data-theme="light"] .sidebar{
+  background: #fff !important;
+  border-right: 1px solid var(--stroke) !important;
+}
+:root[data-theme="light"] .topbar{
+  background: #fff !important;
+  border-bottom: 1px solid var(--stroke) !important;
+}
+:root[data-theme="light"] .brand-name,
+:root[data-theme="light"] .estab,
+:root[data-theme="light"] .estab b{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .brand-sub,
+:root[data-theme="light"] .sidebar-footer{
+  color: var(--muted2) !important;
+}
+:root[data-theme="light"] .nav a{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .nav a i{
+  color: var(--text) !important;
+  opacity:.75 !important;
+}
+
+/* ícones do topo */
+:root[data-theme="light"] .icon-btn{
+  background: rgba(0,0,0,.03) !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn i{
+  color: var(--text) !important;
+  opacity:.85 !important;
+}
+
+/* títulos */
+:root[data-theme="light"] .page h1,
+:root[data-theme="light"] .page h2,
+:root[data-theme="light"] .page h3{
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+
+/* ✅ o pulo do gato: força tudo dentro do panel a ficar escuro */
+:root[data-theme="light"] .panel{
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .panel *{
+  color: var(--text) !important;  /* <- isso resolve “apagado” na marra */
+}
+
+/* re-muta coisas que devem ser muted */
+:root[data-theme="light"] .panel .muted,
+:root[data-theme="light"] .panel .range-scale,
+:root[data-theme="light"] .panel .toggle-text{
+  color: var(--muted) !important;
+}
+:root[data-theme="light"] .panel .subtitle,
+:root[data-theme="light"] .panel .brand-sub{
+  color: var(--muted2) !important;
+}
+
+/* labels / required */
+:root[data-theme="light"] .field label{
+  color: rgba(18,19,24,.78) !important;
+}
+:root[data-theme="light"] .req{
+  color: rgba(18,19,24,.45) !important;
+}
+
+/* inputs/textarea */
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea{
+  background: #fff !important;
+  color: var(--text) !important;
+  border: 1px solid rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder{
+  color: rgba(18,19,24,.45) !important;
+}
+
+/* lista de filas */
+:root[data-theme="light"] .queue-item{
+  background: rgba(0,0,0,.03) !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .queue-sub{
+  color: var(--muted) !important;
+}
+
+/* badge */
+:root[data-theme="light"] .badge-on{
+  color: rgba(120,60,0,.95) !important;
+  background: rgba(255,122,0,.14) !important;
+  border-color: rgba(255,122,0,.28) !important;
+}
+
+/* ===== Logo da Sidebar (substitui o avatar "A") ===== */
+.avatar.avatar-logo{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+  object-fit: contain;
+  display:block;
 }

@@ -57,6 +57,33 @@ function extrairEstabId(data) {
   return id ? Number(id) : null;
 }
 
+// ✅ pega nome do retorno do backend (compatível com vários formatos)
+function extrairNomeEstab(data) {
+  const candidatos = [
+    data?.nome,
+    data?.estabelecimento_nome,
+    data?.nomeEstabelecimento,
+    data?.estabelecimento?.nome,
+    data?.estabelecimento?.estabelecimento_nome,
+    data?.user?.nome,
+    data?.user?.estabelecimento_nome,
+  ];
+  const nome = candidatos.find(v => typeof v === "string" && v.trim());
+  return nome ? nome.trim() : null;
+}
+
+// ✅ salva nome em chaves padronizadas (pra todas as páginas)
+function salvarNomeEstabelecimento(nome) {
+  if (!nome || !String(nome).trim()) return;
+  const n = String(nome).trim();
+
+  // chave "universal" (recomendada)
+  localStorage.setItem("nomeEstabelecimento", n);
+
+  // mantém compatibilidade com o que você já usa
+  localStorage.setItem("estabelecimento_nome", n);
+}
+
 // ================= ELEMENTOS =================
 const bizError = document.getElementById("bizError");
 const signupError = document.getElementById("signupError");
@@ -168,7 +195,7 @@ btnSignupBiz?.addEventListener("click", async () => {
     "Restaurante": "RESTAURANTE",
     "Açougue": "ACOUGUE",
     "Supermercad": "SUPERMERCADO",
-    "Outros": "SUPERMERCADO", // não existe OUTROS no ENUM -> manda algo válido
+    "Outros": "SUPERMERCADO",
   };
 
   const categoria = categoriaMap[signupBizCategory.value.trim()] || "BARBEARIA";
@@ -190,10 +217,12 @@ btnSignupBiz?.addEventListener("click", async () => {
   try {
     const resp = await postJSON("/api/estabelecimentos", payload);
 
-    // ✅ opcional: se a API retornar id, você já pode salvar
+    // ✅ se a API retornar id, salva
     const id = extrairEstabId(resp) || resp?.id || null;
     if (id) localStorage.setItem("estabelecimento_id", String(id));
-    localStorage.setItem("estabelecimento_nome", payload.nome);
+
+    // ✅ salva nome em chaves padronizadas
+    salvarNomeEstabelecimento(payload.nome);
 
     abrirModoBiz();
     bizEmail.value = payload.email;
@@ -232,7 +261,16 @@ btnBiz?.addEventListener("click", async () => {
 
     // ✅ salva id no localStorage (isso destrava Criar Fila e QR Code)
     localStorage.setItem("estabelecimento_id", String(estabId));
-    if (data?.nome) localStorage.setItem("estabelecimento_nome", data.nome);
+
+    // ✅ salva nome vindo da API (se vier) OU mantém o que já tinha salvo
+    const nomeDaApi = extrairNomeEstab(data);
+    if (nomeDaApi) {
+      salvarNomeEstabelecimento(nomeDaApi);
+    } else {
+      // fallback: se já existe do cadastro/anterior, mantém
+      const jaSalvo = localStorage.getItem("estabelecimento_nome");
+      if (jaSalvo) salvarNomeEstabelecimento(jaSalvo);
+    }
 
     window.location.href = "/templates/Dashboard.html";
   } catch (e) {

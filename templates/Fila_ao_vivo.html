@@ -13,8 +13,11 @@
   <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
+  <!-- Base theme (opcional, se você já tiver igual no Atendimento) -->
+  <!-- <link rel="stylesheet" href="/static/css/theme_base.css?v=20260301_1"> -->
+
   <!-- CSS exclusivo -->
-  <link rel="stylesheet" href="/static/css/style_fila_ao_vivo.css">
+  <link rel="stylesheet" href="/static/css/style_fila_ao_vivo.css?v=20260301_2">
 </head>
 
 <body>
@@ -22,7 +25,9 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="avatar">A</div>
+        <div class="avatar">
+          <img src="/assets/img/NAV3.png" alt="Logo do estabelecimento">
+        </div>
         <div class="brand-meta">
           <div class="brand-name">ANDA LOGO</div>
           <div class="brand-sub">Painel do Estabelecimento</div>
@@ -57,15 +62,22 @@
           </button>
         </div>
 
-        <div class="estab" title="Estabelecimento: Barbearia Premium">
+        <!-- ✅ DINÂMICO -->
+        <div class="estab" id="estabHeader" title="Estabelecimento">
           <span class="dot"></span>
           <span>Estabelecimento:</span>
-          <b>&nbsp;Barbearia Premium</b>
+          <b>&nbsp;<span id="nomeEstabelecimento">—</span></b>
         </div>
 
+        <!-- ✅ PADRÃO ATENDIMENTO (botões iguais) -->
         <div class="top-actions">
-          <button class="icon-btn" title="Notificações"><i class="bi bi-bell"></i></button>
-          <button class="icon-btn" title="Tema"><i class="bi bi-sun"></i></button>
+          <button class="icon-btn" type="button" title="Notificações">
+            <i class="bi bi-bell"></i>
+          </button>
+
+          <button class="icon-btn" type="button" data-theme-toggle title="Tema">
+            <i class="bi bi-sun"></i>
+          </button>
         </div>
       </header>
 
@@ -83,21 +95,24 @@
           </div>
         </div>
 
-        <!-- NOVO: seletor de fila -->
+        <!-- Seletor de fila -->
         <div class="queue-picker">
           <div class="queue-picker__label">
             <i class="bi bi-list-task"></i>
             <span>Fila:</span>
           </div>
-          <select id="filaSelect" class="queue-picker__select">
-            <option value="">Carregando...</option>
-          </select>
+
+          <div class="select-wrap">
+            <select id="filaSelect" class="queue-picker__select">
+              <option value="">Carregando...</option>
+            </select>
+          </div>
         </div>
 
         <div class="queue-head">
           <div class="queue-title">
             <span id="queueCountLabel">Aguardando (0)</span>
-            <button class="refresh-btn" id="btnRefresh" title="Atualizar">
+            <button class="refresh-btn" id="btnRefresh" title="Atualizar" type="button">
               <i class="bi bi-arrow-clockwise"></i>
             </button>
           </div>
@@ -110,7 +125,8 @@
     </main>
   </div>
 
-  <!-- JS exclusivo -->
-  <script src="/static/js/app_fila_ao_vivo.js"></script>
+  <!-- ✅ SEMPRE o mesmo tema -->
+  <script src="/static/js/app_theme.js"></script>
+  <script src="/static/js/app_fila_ao_vivo.js?v=20260301_1"></script>
 </body>
 </html>

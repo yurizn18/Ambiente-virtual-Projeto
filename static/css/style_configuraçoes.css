@@ -312,3 +312,266 @@ input:focus{
   .topbar{padding:0 14px}
   h1{font-size:28px}
 }
+
+/* Tema claro/escuro via data-theme no <html> */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Exemplo básico (você pode adaptar pro seu design) */
+:root[data-theme="light"] body {
+  background: #f5f6f8;
+  color: #111;
+}
+
+:root[data-theme="light"] .panel,
+:root[data-theme="light"] .sidebar,
+:root[data-theme="light"] .topbar {
+  background: rgba(0,0,0,.05);
+  border-color: rgba(0,0,0,.08);
+  color: #111;
+}
+
+:root[data-theme="light"] .subtitle,
+:root[data-theme="light"] small {
+  color: rgba(0,0,0,.65);
+}
+
+/* =========================================================
+   ✅ PATCH TEMA CLARO — Configurações (igual Atendimento)
+   Cole no FINAL do style_configuraçoes.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7fb;
+  --border:rgba(0,0,0,.10);
+  --muted:rgba(18,19,24,.70);
+  --muted2:rgba(18,19,24,.55);
+  --text:#121318;
+
+  --accent:#ff7a00;
+  --accent2:#ff8f2a;
+  --success:#2bd576;
+  --danger:#ff4d4d;
+}
+
+/* fundo e texto base */
+:root[data-theme="light"] body{
+  background:
+    radial-gradient(1200px 700px at 30% 0%, rgba(255,122,0,.10), transparent 55%),
+    radial-gradient(900px 600px at 80% 20%, rgba(0,0,0,.05), transparent 55%),
+    var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* sidebar/topbar */
+:root[data-theme="light"] .sidebar{
+  background: linear-gradient(180deg, #ffffff 0%, #f3f5fb 100%) !important;
+  border-right: 1px solid var(--border) !important;
+}
+:root[data-theme="light"] .brand-sub{ color: var(--muted2) !important; }
+
+:root[data-theme="light"] .nav a{
+  color: rgba(18,19,24,.82) !important;
+}
+:root[data-theme="light"] .nav a:hover{
+  background: rgba(0,0,0,.04) !important;
+  border-color: rgba(0,0,0,.06) !important;
+}
+:root[data-theme="light"] .nav-sep{
+  border-top-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .sidebar-footer{
+  border-top-color: rgba(0,0,0,.08) !important;
+  color: rgba(18,19,24,.55) !important;
+}
+
+:root[data-theme="light"] .topbar{
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72)) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+:root[data-theme="light"] .estab{
+  color: rgba(18,19,24,.78) !important;
+}
+:root[data-theme="light"] .estab b{
+  color: var(--text) !important;
+}
+
+/* botões topo */
+:root[data-theme="light"] .icon-btn{
+  border-color: rgba(0,0,0,.10) !important;
+  background: rgba(0,0,0,.03) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="light"] .icon-btn:hover{
+  background: rgba(0,0,0,.05) !important;
+  border-color: rgba(0,0,0,.14) !important;
+}
+:root[data-theme="light"] .icon-btn i{ opacity:.9 !important; }
+
+/* painéis */
+:root[data-theme="light"] .panel{
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72)) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+  color: var(--text) !important;
+}
+
+/* 🔥 garante legibilidade de tudo dentro do painel */
+:root[data-theme="light"] .panel *{
+  color: var(--text) !important;
+}
+
+/* preserva cores especiais */
+:root[data-theme="light"] .panel .panel-ico{
+  color: var(--accent) !important;
+}
+
+/* subtítulos / muted */
+:root[data-theme="light"] .subtitle{
+  color: var(--muted2) !important;
+}
+:root[data-theme="light"] .pref-sub,
+:root[data-theme="light"] .danger-sub{
+  color: rgba(18,19,24,.60) !important;
+}
+
+/* inputs */
+:root[data-theme="light"] input{
+  background: rgba(255,255,255,.92) !important;
+  color: rgba(18,19,24,.90) !important;
+  border-color: rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] input::placeholder{
+  color: rgba(18,19,24,.45) !important;
+}
+
+/* cards prefs/danger */
+:root[data-theme="light"] .pref{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+:root[data-theme="light"] .divider{
+  background: rgba(0,0,0,.10) !important;
+}
+:root[data-theme="light"] .danger{
+  background: rgba(255,77,77,.08) !important;
+  border-color: rgba(255,77,77,.20) !important;
+}
+
+/* botões */
+:root[data-theme="light"] .btn{
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: rgba(18,19,24,.90) !important;
+}
+:root[data-theme="light"] .btn:hover{
+  background: rgba(0,0,0,.05) !important;
+}
+:root[data-theme="light"] .btn-primary{
+  background: var(--accent) !important;
+  border-color: rgba(255,122,0,.55) !important;
+  color: #0b0c0e !important;
+}
+
+/* =========================================================
+   ✅ FIX LEGIBILIDADE (LIGHT) — Configurações
+   Cole no FINAL do style_configuraçoes.css
+========================================================= */
+
+:root[data-theme="light"] .page,
+:root[data-theme="light"] .page h1{
+  color:#121318 !important;
+}
+
+:root[data-theme="light"] .subtitle{
+  color:rgba(18,19,24,.62) !important;
+}
+
+/* Títulos e cabeçalhos dos painéis */
+:root[data-theme="light"] .panel-head h3,
+:root[data-theme="light"] .panel-title h3{
+  color:#121318 !important;
+}
+
+/* Labels e textos auxiliares */
+:root[data-theme="light"] .field label{
+  color:rgba(18,19,24,.78) !important;
+}
+
+:root[data-theme="light"] .pref-title,
+:root[data-theme="light"] .danger-title{
+  color:#121318 !important;
+}
+
+:root[data-theme="light"] .pref-sub,
+:root[data-theme="light"] .danger-sub{
+  color:rgba(18,19,24,.60) !important;
+}
+
+/* Inputs (o valor estava ficando claro) */
+:root[data-theme="light"] input{
+  background:rgba(255,255,255,.92) !important;
+  color:rgba(18,19,24,.92) !important;
+  border-color:rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] input::placeholder{
+  color:rgba(18,19,24,.45) !important;
+}
+
+/* Cards das preferências */
+:root[data-theme="light"] .pref{
+  background:rgba(0,0,0,.03) !important;
+  border-color:rgba(0,0,0,.10) !important;
+}
+
+/* Divisor */
+:root[data-theme="light"] .divider{
+  background:rgba(0,0,0,.10) !important;
+}
+
+/* “Sair da conta” (danger) */
+:root[data-theme="light"] .danger{
+  background:rgba(255,77,77,.08) !important;
+  border-color:rgba(255,77,77,.22) !important;
+}
+
+/* Botões */
+:root[data-theme="light"] .btn{
+  color:rgba(18,19,24,.92) !important;
+  background:rgba(0,0,0,.03) !important;
+  border-color:rgba(0,0,0,.12) !important;
+}
+:root[data-theme="light"] .btn:hover{
+  background:rgba(0,0,0,.05) !important;
+}
+:root[data-theme="light"] .btn-primary{
+  color:#0b0c0e !important; /* texto preto no laranja */
+}
+
+/* ===== Logo da Sidebar (substitui o avatar "A") ===== */
+.avatar.avatar-logo{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+  object-fit: contain;
+  display:block;
+}

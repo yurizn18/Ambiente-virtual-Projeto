@@ -23,7 +23,9 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="avatar">A</div>
+        <div class="avatar avatar-logo">
+          <img src="/assets/img/NAV3.png" alt="ANDA LOGO" class="brand-logo">
+        </div>
         <div class="brand-meta">
           <div class="brand-name">ANDA LOGO</div>
           <div class="brand-sub">Painel do Estabelecimento</div>
@@ -59,15 +61,20 @@
           </button>
         </div>
 
-        <div class="estab">
+        <!-- ✅ DINÂMICO -->
+        <div class="estab" id="estabHeader" title="Estabelecimento">
           <span class="dot"></span>
           <span>Estabelecimento:</span>
-          <b>&nbsp;Barbearia Premium</b>
+          <b>&nbsp;<span id="nomeEstabelecimento">—</span></b>
         </div>
 
         <div class="top-actions">
-          <button class="icon-btn"><i class="bi bi-bell"></i></button>
-          <button class="icon-btn"><i class="bi bi-sun"></i></button>
+          <button class="icon-btn" title="Notificações"><i class="bi bi-bell"></i></button>
+
+          <!-- ✅ padrão correto (igual atendimento/dashboard) -->
+          <button class="icon-btn" type="button" data-theme-toggle title="Tema">
+            <i class="bi bi-sun"></i>
+          </button>
         </div>
       </header>
 
@@ -133,9 +140,10 @@
 
   <!-- 1️⃣ Biblioteca QR (obrigatório primeiro) -->
   <script src="/static/js/qrcodegen.js"></script>
+  <script src="/static/js/app_theme.js"></script>
 
   <!-- 2️⃣ Seu JS -->
-  <script src="/static/js/app_qr_code.js"></script>
+  <script src="/static/js/app_qr_code.js?v=4"></script>
 
 </body>
 </html>

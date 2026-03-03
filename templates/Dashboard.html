@@ -21,7 +21,9 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="avatar">A</div>
+        <div class="avatar avatar-logo">
+          <img src="/assets/img/NAV3.png" alt="ANDA LOGO" class="brand-logo">
+        </div>
         <div>
           <b>ANDA LOGO</b>
           <small>Painel do Estabelecimento</small>
@@ -44,16 +46,24 @@
     <main class="content">
 
       <header class="topbar">
-        <button id="menuBtn" class="menu-btn"><i class="bi bi-list"></i></button>
+        <button id="menuBtn" class="menu-btn" aria-label="Abrir menu"><i class="bi bi-list"></i></button>
 
-        <div class="estab">
+        <!-- ✅ dinâmico -->
+        <div class="estab" id="estabHeader" title="Estabelecimento">
           <span class="dot"></span>
-          Estabelecimento: <b>Barbearia Premium</b>
+          <span>Estabelecimento:</span>
+          <b>&nbsp;<span id="nomeEstabelecimento">—</span></b>
         </div>
 
-        <div class="icons">
-          <i class="bi bi-bell"></i>
-          <i class="bi bi-sun"></i>
+        <!-- ✅ padrão Atendimento -->
+        <div class="top-actions">
+          <button class="icon-btn" type="button" title="Notificações" aria-label="Notificações">
+            <i class="bi bi-bell"></i>
+          </button>
+
+          <button class="icon-btn" type="button" data-theme-toggle title="Tema" aria-label="Alternar tema">
+            <i class="bi bi-sun"></i>
+          </button>
         </div>
       </header>
 
@@ -65,28 +75,29 @@
         <div class="cards">
           <div class="card">
             <i class="bi bi-people"></i>
-            <h2 id="fila">4</h2>
+            <h2 id="fila">0</h2>
             <span>Na fila</span>
           </div>
 
           <div class="card">
-            <i class="bi bi-person-check"></i>
-            <h2 id="atendendo">0</h2>
-            <span>Atendendo</span>
-          </div>
-
-          <div class="card">
             <i class="bi bi-clock"></i>
-            <h2>15 min</h2>
+            <h2 id="tempoMedioDash">-- min</h2>
             <span>Tempo médio</span>
           </div>
 
           <div class="card">
+            <i class="bi bi-person-check"></i>
+            <h2 id="emAtendimentoDash">0</h2>
+            <span>Em atendimento</span>
+          </div>
+
+          <div class="card">
             <i class="bi bi-geo-alt"></i>
-            <h2>3</h2>
+            <h2 id="noRaioDash">0</h2>
             <span>No raio</span>
           </div>
         </div>
+        <!-- FIM MÉTRICAS -->
 
         <!-- PRÓXIMO -->
         <div class="box">
@@ -94,7 +105,7 @@
 
           <div class="next">
             <div>
-              <b id="proximoNome">João Silva</b>
+              <b id="proximoNome">—</b>
               <span class="pill">Aguardando</span>
             </div>
 
@@ -115,7 +126,10 @@
     </main>
   </div>
 
-  <!-- JS externo -->
-  <script src="/static/js/app_dashboard.js"></script>
+  <!-- ✅ tema (correto) -->
+  <script src="/static/js/app_theme.js"></script>
+
+  <!-- JS da página -->
+  <script src="/static/js/app_dashboard.js?v=4"></script>
 </body>
 </html>

@@ -22,7 +22,9 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="avatar">A</div>
+        <div class="avatar avatar-logo">
+          <img src="/assets/img/NAV3.png" alt="ANDA LOGO" class="brand-logo">
+        </div>
         <div class="brand-meta">
           <div class="brand-name">ANDA LOGO</div>
           <div class="brand-sub">Painel do Estabelecimento</div>
@@ -57,15 +59,16 @@
           </button>
         </div>
 
-        <div class="estab" title="Estabelecimento: Barbearia Premium">
+        <!-- ✅ TOPO DINÂMICO -->
+        <div class="estab" id="estabHeader" title="Estabelecimento">
           <span class="dot"></span>
           <span>Estabelecimento:</span>
-          <b>&nbsp;Barbearia Premium</b>
+          <b>&nbsp;<span id="nomeEstabelecimento">—</span></b>
         </div>
 
-        <div class="top-actions">
-          <button class="icon-btn" id="btnTheme" title="Tema"><i class="bi bi-sun"></i></button>
-        </div>
+        <button class="icon-btn" type="button" data-theme-toggle title="Tema">
+          <i class="bi bi-sun"></i>
+        </button>
       </header>
 
       <!-- PAGE -->
@@ -86,18 +89,18 @@
             <form class="form" id="formPerfil">
               <div class="field">
                 <label>Nome do estabelecimento</label>
-                <input id="inpNome" type="text" placeholder="Ex.: Barbearia Premium" value="Barbearia Premium">
+                <input id="inpNome" type="text" placeholder="Ex.: Barbearia Premium" value="">
               </div>
 
               <div class="field">
                 <label>Endereço</label>
-                <input id="inpEndereco" type="text" placeholder="Ex.: Rua das Flores, 123 - Centro" value="Rua das Flores, 123 - Centro">
+                <input id="inpEndereco" type="text" placeholder="Ex.: Rua das Flores, 123 - Centro" value="">
               </div>
 
               <div class="row-2">
                 <div class="field">
                   <label>Telefone/WhatsApp</label>
-                  <input id="inpTelefone" type="text" placeholder="(00) 00000-0000" value="(11) 99999-9999">
+                  <input id="inpTelefone" type="text" placeholder="(00) 00000-0000" value="">
                 </div>
 
                 <div class="field">
@@ -178,6 +181,8 @@
   </div>
 
   <!-- JS exclusivo -->
-  <script src="/static/js/app_configuraçoes.js"></script>
+  <!-- JS exclusivo -->
+  <script src="/static/js/app_theme.js"></script>
+  <script src="/static/js/app_configuraçoes.js?v=1"></script>
 </body>
 </html>

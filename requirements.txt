@@ -1,0 +1,9 @@
+
+fastapi
+uvicorn
+mysql-connector-python
+pydantic[email]
+python-dotenv
+requests
+flask
+flask-cors

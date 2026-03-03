@@ -1106,8 +1106,8 @@ body #modalCard button#btnClient.btn{
   border: 0 !important;
   border-radius: 14px !important;
 
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important; /* iOS */
+  color: #000000 !important;
+  -webkit-text-fill-color: #030202 !important; /* iOS */
   font-size: 16px !important;
   font-weight: 800 !important;
   letter-spacing: .2px !important;
@@ -1131,8 +1131,8 @@ body .overlay .successActions button.successBtn{
   border: 0 !important;
   border-radius: 14px !important;
 
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important; /* iOS */
+  color: #080202 !important;
+  -webkit-text-fill-color: #010000 !important; /* iOS */
   font-size: 16px !important;
   font-weight: 800 !important;
 

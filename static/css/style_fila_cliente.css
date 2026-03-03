@@ -312,3 +312,464 @@ body{
   touch-action: manipulation;
 }
 
+/* ===== Modo EM ATENDIMENTO ===== */
+
+.pos-num.em-atendimento{
+  font-size: clamp(18px, 4vw, 26px); /* responsivo */
+  font-weight: 700;
+  letter-spacing: .5px;
+
+  white-space: nowrap;     /* não quebra linha */
+  overflow: hidden;
+  text-overflow: ellipsis; /* corta se faltar espaço */
+
+  color: #ffffff; /* opcional — laranja suave */
+}
+
+.pos-sub.em-atendimento{
+  font-size: 14px;
+  color: rgba(255,255,255,.8);
+}
+
+#posicao {
+  color: #fff !important;
+}
+/* ===== Modal final/cancel (cliente) ===== */
+.final-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 99999;
+}
+.final-modal.show{ display:flex; }
+
+.final-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(6px);
+}
+
+.final-card{
+  position: relative;
+  z-index: 2;
+  width: min(560px, 92vw);
+  border-radius: 18px;
+  border: 1px solid rgba(255,122,0,.25);
+  background: linear-gradient(180deg, rgba(255,122,0,.12), rgba(0,0,0,.25));
+  box-shadow: 0 30px 90px rgba(0,0,0,.85);
+  padding: 28px 26px;
+  text-align: center;
+  color: #fff;
+  animation: pop .22s ease;
+}
+@keyframes pop{ from{opacity:0; transform:scale(.95)} to{opacity:1; transform:scale(1)} }
+
+.final-title{
+  font-weight: 900;
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+.final-sub{
+  opacity: .85;
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.final-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  font-weight: 800;
+  margin: 10px 0 18px;
+}
+.final-actions{
+  display:flex;
+  justify-content:center;
+}
+.final-btn{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: 12px 16px;
+  font-weight: 900;
+  cursor: pointer;
+  min-width: 200px;
+}
+.final-btn.primary{
+  background: #ff7a00;
+  color: #0b0c0e;
+  border-color: rgba(255,122,0,.55);
+  box-shadow: 0 14px 30px rgba(255,122,0,.18);
+}
+/* =========================================================
+   ✅ LIGHT MODE — Fila Cliente
+   Cole NO FINAL do style_fila_cliente.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f5f6f8;
+  --panel: rgba(255,255,255,.92);
+  --panel2: rgba(255,255,255,.85);
+  --border: rgba(0,0,0,.10);
+
+  --text:#121318;
+  --muted: rgba(18,19,24,.62);
+}
+
+/* Fundo (mantém o estilo, mas claro) */
+:root[data-theme="light"] body{
+  background:
+    radial-gradient(1200px 700px at 50% 0%, rgba(255,122,0,.10), transparent 60%),
+    radial-gradient(900px 700px at 80% 30%, rgba(0,0,0,.05), transparent 55%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* Marca */
+:root[data-theme="light"] .brand-white{ color:#121318; }
+
+/* Botões de ícone */
+:root[data-theme="light"] .icon-btn{
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.10);
+  color: #121318;
+}
+
+/* Cards */
+:root[data-theme="light"] .card{
+  box-shadow: 0 14px 34px rgba(0,0,0,.12);
+}
+
+/* Títulos e textos */
+:root[data-theme="light"] .card-title{
+  color: rgba(18,19,24,.92);
+}
+:root[data-theme="light"] .card-title i{
+  background: rgba(255,122,0,.12);
+  border-color: rgba(255,122,0,.25);
+}
+
+:root[data-theme="light"] .pos-sub{
+  color: rgba(18,19,24,.62);
+}
+
+:root[data-theme="light"] .k{
+  color: rgba(18,19,24,.62);
+}
+:root[data-theme="light"] .v{
+  color: rgba(18,19,24,.92);
+}
+:root[data-theme="light"] .v.danger{
+  color: #d73737;
+}
+
+/* Pills */
+:root[data-theme="light"] .pill.ok{
+  background: rgba(43,213,118,.12);
+  border-color: rgba(43,213,118,.25);
+  color: #157a42;
+}
+:root[data-theme="light"] .pill.bad{
+  background: rgba(255,77,77,.12);
+  border-color: rgba(255,77,77,.25);
+  color: #b32626;
+}
+
+/* Mapa fake */
+:root[data-theme="light"] .map{
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.10);
+}
+:root[data-theme="light"] .map-line{
+  background: rgba(0,0,0,.12);
+}
+
+/* Botões ação */
+:root[data-theme="light"] .btn{
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.10);
+  color: rgba(18,19,24,.92);
+}
+:root[data-theme="light"] .btn.ghost{
+  background: rgba(0,0,0,.03);
+  color: rgba(18,19,24,.82);
+}
+:root[data-theme="light"] .btn.danger{
+  background: rgba(255,77,77,.18);
+  border-color: rgba(255,77,77,.28);
+  color: #5a1515;
+}
+
+/* Toast */
+:root[data-theme="light"] .toast{
+  background: rgba(0,0,0,.70);
+}
+
+/* =========================================================
+   PATCH — LIGHT com contraste + posição destacada
+   Cole NO FINAL do style_fila_cliente.css
+========================================================= */
+
+:root[data-theme="light"]{
+  --bg:#f6f7f9;
+
+  /* cards mais “brancos” e com borda real */
+  --panel: rgba(255,255,255,.96);
+  --panel2: rgba(255,255,255,.92);
+  --border: rgba(17,19,24,.12);
+
+  /* textos com mais contraste */
+  --text:#121318;
+  --muted: rgba(18,19,24,.70);
+}
+
+/* fundo menos lavado */
+:root[data-theme="light"] body{
+  background:
+    radial-gradient(1200px 700px at 50% 0%, rgba(255,122,0,.12), transparent 62%),
+    radial-gradient(900px 700px at 80% 30%, rgba(0,0,0,.06), transparent 58%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* título/brand */
+:root[data-theme="light"] .brand-white{ color: #121318; }
+
+/* cards com sombra mais “real” */
+:root[data-theme="light"] .card{
+  box-shadow: 0 12px 30px rgba(0,0,0,.10);
+}
+
+/* cabeçalhos dos cards */
+:root[data-theme="light"] .card-title{
+  color: rgba(18,19,24,.92);
+}
+:root[data-theme="light"] .card-title i{
+  background: rgba(255,122,0,.12);
+  border-color: rgba(255,122,0,.25);
+}
+
+/* textos */
+:root[data-theme="light"] .sub{ color: rgba(18,19,24,.70); }
+:root[data-theme="light"] .k{ color: rgba(18,19,24,.70); }
+:root[data-theme="light"] .v{ color: rgba(18,19,24,.92); }
+
+/* ✅ AQUI está o principal: posição visível e destacada */
+:root[data-theme="light"] .card.highlight{
+  border-color: rgba(255,122,0,.35);
+  background: linear-gradient(180deg, rgba(255,122,0,.10), rgba(255,255,255,.92));
+}
+
+:root[data-theme="light"] .pos-num{
+  color: #121318;           /* ou use var(--accent) se quiser laranja */
+  text-shadow: 0 1px 0 rgba(255,255,255,.65);
+}
+
+/* ✅ SOBREPÕE o #posicao branco com !important */
+:root[data-theme="light"] #posicao{
+  color: #121318 !important;  /* se quiser laranja: var(--accent) */
+}
+
+/* botões de ícone */
+:root[data-theme="light"] .icon-btn{
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.12);
+  color: #121318;
+}
+
+/* mapa */
+:root[data-theme="light"] .map{
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.12);
+}
+:root[data-theme="light"] .map-line{ background: rgba(0,0,0,.14); }
+
+/* botões ações */
+:root[data-theme="light"] .btn{
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.12);
+  color: rgba(18,19,24,.92);
+}
+:root[data-theme="light"] .btn.ghost{
+  color: rgba(18,19,24,.82);
+}
+
+/* pill fora do raio (melhor contraste) */
+:root[data-theme="light"] .pill.bad{
+  background: rgba(255,77,77,.12);
+  border-color: rgba(255,77,77,.25);
+  color: #b32626;
+}
+
+/* ==========================================
+   FINAL MODAL (cliente) — FIX
+   ✅ overlay blur separado
+   ✅ card padronizado
+   ✅ sem retângulo fantasma
+========================================== */
+
+#finalModal{
+  position: fixed !important;
+  inset: 0 !important;
+  display: none !important;
+  z-index: 99999 !important;
+  padding: 16px !important;
+}
+#finalModal.show{ display:block !important; }
+
+/* overlay (cobre tela inteira) */
+#finalModal .final-overlay,
+#finalModal .finalOverlay,
+#finalModal .finishOverlay{
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,.72) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+/* animações */
+@keyframes finalModalIn{
+  from{ opacity:0; transform: translateY(10px) scale(.96); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+/* animações */
+@keyframes finalFloat {
+  0%   { transform: translate(-50%, -50%) translateY(0); }
+  33%  { transform: translate(-50%, -50%) translateY(-6px); }
+  66%  { transform: translate(-50%, -50%) translateY(-2px); }
+  100% { transform: translate(-50%, -50%) translateY(0); }
+}
+
+@keyframes finalBorderFlow {
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* CARD */
+#finalModal .final-card,
+#finalModal .finalCard,
+#finalModal .finishCard {
+
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+
+  width: min(520px, 92vw);
+  border-radius: 18px;
+  padding: 26px 22px;
+  text-align: center;
+
+  background: linear-gradient(180deg, #1a1a1a, #101010);
+  border: 1px solid rgba(255,122,0,.18);
+  box-shadow: 0 22px 60px rgba(0,0,0,.70);
+
+  isolation: isolate;
+  overflow: visible !important;
+  z-index: 2;
+
+  animation: finalFloat 7.5s cubic-bezier(.4,0,.2,1) infinite;
+}
+
+#finalModal .final-card > *,
+#finalModal .finalCard > *,
+#finalModal .finishCard > *,
+#finalModal .modal-card > *{
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* borda fixa */
+#finalModal .final-card::before,
+#finalModal .finalCard::before,
+#finalModal .finishCard::before,
+#finalModal .modal-card::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-1px !important;
+  border-radius: inherit !important;
+  padding: 1px !important;
+  pointer-events:none !important;
+  z-index: 3 !important;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,122,0,.16),
+    rgba(255,122,0,.10),
+    rgba(255,122,0,.16)
+  ) !important;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) !important;
+  -webkit-mask-composite: xor !important;
+  mask-composite: exclude !important;
+}
+
+/* trail passando */
+#finalModal .final-card::after,
+#finalModal .finalCard::after,
+#finalModal .finishCard::after {
+
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events:none;
+  z-index: 4;
+
+  background: linear-gradient(
+    90deg,
+    transparent 35%,
+    rgba(255,154,60,.35),
+    rgba(255,102,0,.75),
+    rgba(255,154,60,.35),
+    transparent 65%
+  );
+
+  background-size: 300% 100%;
+  animation: finalBorderFlow 16s linear infinite;
+
+  filter:
+    drop-shadow(0 0 14px rgba(255,122,0,.30))
+    drop-shadow(0 0 28px rgba(255,122,0,.18));
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ids do conteúdo */
+#finalTitle{ font-weight: 900 !important; }
+#finalSub{ color: rgba(233,233,234,.72) !important; line-height: 1.35 !important; }
+#finalPill{
+  display:inline-flex !important;
+  padding:10px 14px !important;
+  border-radius:999px !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  background: rgba(0,0,0,.18) !important;
+  font-weight:900 !important;
+}
+
+/* botão sair (se o JS usar classe/ID) */
+#finalModal button{
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,122,0,.55) !important;
+  background: linear-gradient(180deg, var(--accent2, #ff8f2a), var(--accent, #ff6600)) !important;
+  color: #111 !important;
+  font-weight: 900 !important;
+}
