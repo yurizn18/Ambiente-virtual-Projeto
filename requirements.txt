@@ -6,4 +6,3 @@ pydantic[email]
 python-dotenv
 requests
 flask
-flask-cors
